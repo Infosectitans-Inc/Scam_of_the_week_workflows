@@ -1,0 +1,1 @@
+{ "version":1, "updated_at":"test", "items":[{"id":"test","week_of":"2025-01-01","title":"Test","summary":"Test","red_flags":["x"],"what_to_do":["y"],"sources":[{"name":"Test","url":"https://example.com"}],"hero_image":""}] }
