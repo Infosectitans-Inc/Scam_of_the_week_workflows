@@ -1,0 +1,64 @@
+name: Scam of the Week
+
+on:
+  schedule:
+    - cron: '0 13 * * MON'   # 9:00 AM ET (EDT) / 8:00 AM ET (EST)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: |
+          pip install feedparser requests jsonschema
+
+      - name: Generate weekly JSON
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python scripts/build_scam_week.py
+
+      - name: Validate schema
+        run: |
+          python scripts/validate_schema.py content/scam-of-the-week.json schema/scam.schema.json
+
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Update Scam of the Week"
+          title: "Weekly Scam Update"
+          body: "Auto-generated update. Please review and merge."
+          branch: bot/scam-update
+
+  publish:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # OPTIONAL: If you use GitHub Pages, add your existing deploy step here.
+      # Simpler: serve the JSON directly from the repo (raw URL or jsDelivr).
+
+      - name: Send FCM notification
+        if: success()
+        env:
+          FCM_SERVER_KEY: ${{ secrets.FCM_SERVER_KEY }}
+        run: |
+          LATEST_ID=$(jq -r '.items[0].id' content/scam-of-the-week.json)
+          curl -s -X POST https://fcm.googleapis.com/fcm/send \
+            -H "Authorization: key=$FCM_SERVER_KEY" \
+            -H "Content-Type: application/json" \
+            -d "{\"to\":\"/topics/scam_of_the_week\",\"notification\":{\"title\":\"New Scam of the Week\",\"body\":\"Tap to learn the red flags.\"},\"data\":{\"id\":\"$LATEST_ID\"}}"
