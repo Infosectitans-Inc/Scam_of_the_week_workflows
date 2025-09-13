@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["version", "updated_at", "items"],
+  "properties": {
+    "version": { "type": "integer" },
+    "updated_at": { "type": "string" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "week_of", "title", "summary", "red_flags", "what_to_do", "sources"],
+        "properties": {
+          "id": { "type": "string" },
+          "week_of": { "type": "string" },
+          "title": { "type": "string" },
+          "summary": { "type": "string" },
+          "red_flags": { "type": "array", "items": { "type": "string" } },
+          "what_to_do": { "type": "array", "items": { "type": "string" } },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name", "url"],
+              "properties": {
+                "name": { "type": "string" },
+                "url":  { "type": "string" }
+              }
+            },
+            "minItems": 1
+          },
+          "hero_image": { "type": "string" }
+        }
+      },
+      "minItems": 1
+    }
+  }
+}
