@@ -1,0 +1,23 @@
+{
+  "id": "2025-W43",
+  "week_of": "2025-10-20",
+  "title": "CISA and Partners Providing Real-Time Incident Response to Cyber Attack on State of Nevada",
+  "summary": "CISA and its public and private sector partners are working closely with officials in Nevada as they respond to an August 24th cyber-attack targeting the state and impacting essential services.",
+  "red_flags": [
+    "Unsolicited contact asking for personal/financial info",
+    "Urgent language or threats (account locked, legal action)",
+    "Links or attachments from unknown senders"
+  ],
+  "what_to_do": [
+    "Do not click links\u2014go directly to the official website/app",
+    "Never share passwords, 2FA codes, or full SSN",
+    "Report to the FTC at reportfraud.ftc.gov and your bank"
+  ],
+  "sources": [
+    {
+      "name": "CISA",
+      "url": "https://www.cisa.gov/news-events/news/cisa-and-partners-providing-real-time-incident-response-cyber-attack-state-nevada"
+    }
+  ],
+  "hero_image": ""
+}

@@ -1,29 +1,29 @@
 {
   "version": 1,
+  "updated_at": "2025-10-20T13:22:58Z",
   "items": [
     {
-      "id": "phishing-email-2024-01",
-      "week_of": "2024-01-15",
-      "title": "Sophisticated Phishing Email Targeting Business Users , github,1,2,3",
-      "summary": "A new wave of phishing emails is targeting business professionals with fake Microsoft Office 365 login pages. These emails appear to come from legitimate sources and use convincing branding to steal credentials.",
+      "id": "2025-W43",
+      "week_of": "2025-10-20",
+      "title": "CISA and Partners Providing Real-Time Incident Response to Cyber Attack on State of Nevada",
+      "summary": "CISA and its public and private sector partners are working closely with officials in Nevada as they respond to an August 24th cyber-attack targeting the state and impacting essential services.",
       "red_flags": [
-        "Urgent language about account suspension",
-        "Generic greetings like 'Dear User'",
-        "Suspicious sender email domains",
-        "Links that don't match the claimed destination",
-        "Poor spelling and grammar"
+        "Unsolicited contact asking for personal/financial info",
+        "Urgent language or threats (account locked, legal action)",
+        "Links or attachments from unknown senders"
       ],
       "what_to_do": [
-        "Always verify sender through alternate communication",
-        "Hover over links to check actual destinations",
-        "Type URLs directly instead of clicking links",
-        "Enable two-factor authentication",
-        "Report suspicious emails to IT security"
-      ]
+        "Do not click links\u2014go directly to the official website/app",
+        "Never share passwords, 2FA codes, or full SSN",
+        "Report to the FTC at reportfraud.ftc.gov and your bank"
+      ],
+      "sources": [
+        {
+          "name": "CISA",
+          "url": "https://www.cisa.gov/news-events/news/cisa-and-partners-providing-real-time-incident-response-cyber-attack-state-nevada"
+        }
+      ],
+      "hero_image": ""
     }
-  ],
-  "metadata": {
-    "updated": "2024-01-15T10:00:00Z",
-    "source": "EmailSecuraX Security Team"
-  }
+  ]
 }
